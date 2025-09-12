@@ -32,20 +32,20 @@ python -m venv venv
 # Usage
 The Basic command structure is 
 ```
-python main.py [options] <paths>
+python src/main.py [options] <paths>
 ```
 - To analyze the entire current directory:
 ```
-python main.py .
+python src/main.py .
 ```
 - To analyze specific directories or files:
 ```
-python main.py ./src
+python src/main.py [directory]
 ```
 
 - To save the output to a file:
 ```
-python main.py . -o output.md
+python src/main.py . -o output.md
 ```
 
 - command may be updated later
