@@ -2,6 +2,7 @@
 import argparse
 import sys
 import os
+import subprocess
 
 TOOL_VERSION = "0.1.0"
 
@@ -19,6 +20,23 @@ def get_all_files(paths):
                     # os.path.join completes the file path
                     all_files.append(os.path.join(root, file))
     return all_files
+
+# TODO: use subprocess module to execute git commands and get newest commit and branch name
+def get_git_info():
+    pass
+
+# TODO: Currently, file names are just listed on the terminal. Must create tree structure reflecting depth of file and directories
+def create_structure_tree(file_list):
+    pass
+
+# TODO: gather the file contents and merge into a big string block.
+# consider try catch.
+def format_file_contents(file_list):
+    pass
+
+# TODO: calculate entire number of files and number of lines.
+def generate_summary(file_list, total_lines):
+    pass
 
 def main():
     # ArgumentParser object creation
@@ -52,6 +70,10 @@ def main():
     print("file found:")
     for f in file_list:
         print(f"- {f}")
+
+    # TODO: call the helper functions
+    # Store the return value from each function
+    # put all the return value into a single output.txt file
 
 if __name__ == "__main__":
     main()
