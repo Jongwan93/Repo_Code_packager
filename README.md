@@ -3,9 +3,10 @@ REPO_CODE_PACKAGER (Repository Context Packager)
 REPO_CODE_PACKAGER is a command-line tool (CLI) that analyzes a local Git repository and generates a single, clean text file optimized for sharing with Large Language Models (LLMs). No more manually copy-pasting files when asking ChatGPT for help with your code!
 
 The Problem
+
 When developers ask LLMs for help with their code, the biggest challenge is providing enough context. Sharing snippets of code without the project's file structure, dependencies, and file relationships often leads to generic or unhelpful answers.
 
-RepoScriber solves this by packaging all the essential information about your repository into one well-structured file, helping the LLM understand your project's architecture much more effectively.
+REPO_CODE_PACKAGER solves this by packaging all the essential information about your repository into one well-structured file, helping the LLM understand your project's architecture much more effectively.
 
 Key Features
 - Simple CLI Interface: Analyze your entire project, specific directories, or individual files with a single command.
