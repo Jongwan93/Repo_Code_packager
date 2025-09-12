@@ -34,9 +34,26 @@ source venv/bin/activate
 # Activate on Windows
 .\venv\Scripts\activate
 
-Install dependencies:
+# Usage
+The Basic command structure is 
+```
+python main.py [options] <paths>
+```
+- To analyze the entire current directory:
+```
+python main.py .
+```
+- To analyze specific directories or files:
+```
+python main.py ./src
+```
 
+- To save the output to a file:
+```
+python main.py . -o output.md
+```
 
+- command may be updated later
 
 # License
 This project is licensed under the MIT License.
