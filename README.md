@@ -26,19 +26,18 @@ cd REPO_CODE_PACKAGER
 Set up and activate a virtual environment:
 ```
 
-Bash
-
 # Create a virtual environment
 python -m venv venv
 # Activate on macOS/Linux
 source venv/bin/activate
+
 # Activate on Windows
 .\venv\Scripts\activate
+
 Install dependencies:
-If you used external libraries like pathspec, it's best practice to list them in a requirements.txt file.
 
 
 
-License
+# License
 This project is licensed under the MIT License.
 
