@@ -15,20 +15,16 @@ Key Features
 
 - Git Integration: Includes key Git metadata like the current branch and latest commit information.
 
-- File Content Aggregation: Combines the content of all specified text files, separated by clear headers.
-
-- Automatic .gitignore Handling: Smartly excludes files and directories listed in your .gitignore to keep the output clean and relevant.
-
 - Save to File: Print the context directly to the console or use the -o option to save it to a .txt or .md file.
 
 🛠️ Installation
 Clone the repository:
 
-Bash
-
+```
 git clone https://github.com/jongwan93/REPO_CODE_PACKAGER
 cd REPO_CODE_PACKAGER
 Set up and activate a virtual environment:
+```
 
 Bash
 
