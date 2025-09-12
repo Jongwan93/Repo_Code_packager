@@ -28,11 +28,6 @@ Set up and activate a virtual environment:
 
 # Create a virtual environment
 python -m venv venv
-# Activate on macOS/Linux
-source venv/bin/activate
-
-# Activate on Windows
-.\venv\Scripts\activate
 
 # Usage
 The Basic command structure is 
