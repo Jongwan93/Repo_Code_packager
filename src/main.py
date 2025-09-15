@@ -7,17 +7,19 @@ import subprocess
 TOOL_VERSION = "0.1.0"
 
 # find the files and directory
+# Issue #2 Fix: Return absolute paths [9/14/2025]
 def get_all_files(paths):
     all_files = []
     for path in paths:
+        # Convert the input path to an absolute path
+        abs_path = os.path.abspath(path)
         # if the path leads to file, add it to list
-        if os.path.isfile(path):
-            all_files.append(path)
+        if os.path.isfile(abs_path):
+            all_files.append(abs_path)
         # if the path is directory, add all the files under it
-        elif os.path.isdir(path):
-            for root, _, files in os.walk(path):
+        elif os.path.isdir(abs_path):
+            for root, _, files in os.walk(abs_path):
                 for file in files:
-                    # os.path.join completes the file path
                     all_files.append(os.path.join(root, file))
     return all_files
 
