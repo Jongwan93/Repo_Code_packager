@@ -1,3 +1,196 @@
+# Repository Context
+
+## File System Location
+
+/Users/jongwanhur/Desktop/project/Repo_Code_packager
+
+## Git Info
+
+- Commit: b9ac0a4667b377845faf109c209d8f45d0ecd8ba
+- Branch: main
+- Author: Jong wan Hur <jongwanhur@Jongs-MacBook-Pro.local>
+- Date: Wed Sep 17 11:33:35 2025 -0400
+
+## Structure
+
+├── LICENSE
+├── README.md
+├── package-lock.json
+├── package.json
+└── src
+    ├── Testfile_Folder
+    │   └── testfile.py
+    └── main.py
+
+## File Contents
+
+### File: LICENSE
+
+```
+MIT License
+
+Copyright (c) 2025 Steven Hur
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+```
+
+### File: README.md
+
+```markdown
+REPO_CODE_PACKAGER (Repository Context Packager)
+
+REPO_CODE_PACKAGER is a command-line tool (CLI) that analyzes a local Git repository and generates a single, clean text file optimized for sharing with Large Language Models (LLMs). No more manually copy-pasting files when asking ChatGPT for help with your code!
+
+The Problem
+
+When developers ask LLMs for help with their code, the biggest challenge is providing enough context. Sharing snippets of code without the project's file structure, dependencies, and file relationships often leads to generic or unhelpful answers.
+
+REPO_CODE_PACKAGER solves this by packaging all the essential information about your repository into one well-structured file, helping the LLM understand your project's architecture much more effectively.
+
+Key Features
+- Simple CLI Interface: Analyze your entire project, specific directories, or individual files with a single command.
+
+- Project Structure Visualization: Automatically generates a tree view of your project's directory and file structure.
+
+- Git Integration: Includes key Git metadata like the current branch and latest commit information.
+
+- Save to File: Print the context directly to the console or use the -o option to save it to a .txt or .md file.
+
+🛠️ Installation
+Clone the repository:
+
+```
+git clone https://github.com/jongwan93/REPO_CODE_PACKAGER
+cd REPO_CODE_PACKAGER
+pip install Pygments
+Set up and activate a virtual environment:
+```
+
+# Create a virtual environment
+python -m venv venv
+
+# Usage
+The Basic command structure is 
+```
+python src/main.py [options] <paths>
+```
+- To analyze the entire current directory:
+```
+python src/main.py .
+```
+- To analyze specific directories or files:
+```
+python src/main.py [directory]
+```
+
+- To save the output to a file:
+```
+python src/main.py . -o output.md
+```
+
+- command may be updated later
+
+# License
+This project is licensed under the MIT License.
+
+
+```
+
+### File: package-lock.json
+
+```json
+{
+  "name": "repo_code_packager",
+  "version": "1.0.0",
+  "lockfileVersion": 3,
+  "requires": true,
+  "packages": {
+    "": {
+      "name": "repo_code_packager",
+      "version": "1.0.0",
+      "license": "ISC"
+    }
+  }
+}
+
+```
+
+### File: package.json
+
+```json
+{
+  "name": "repo_code_packager",
+  "version": "1.0.0",
+  "description": "REPO_CODE_PACKAGER (Repository Context Packager) RepoScriber is a command-line tool (CLI) that analyzes a local Git repository and generates a single, clean text file optimized for sharing with Large Language Models (LLMs). No more manually copy-pasting files when asking ChatGPT for help with your code!",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jongwan93/Repo_Code_packager.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Jongwan93/Repo_Code_packager/issues"
+  },
+  "homepage": "https://github.com/Jongwan93/Repo_Code_packager#readme"
+}
+
+```
+
+### File: src/Testfile_Folder/testfile.py
+
+```python
+class Solution:
+    def calPoints(self, operations):
+        stack = []
+        for c in operations:
+            if c == "+":
+                stack.append(stack[-1] + stack[-2])
+            elif c == "D":
+                stack.append(stack[-1] * 2)
+            elif c == "C":
+                stack.pop()
+            else:
+                stack.append(int(c))
+        return sum(stack)
+        
+def main():
+    sol = Solution()
+    ops = ["1","2","+","C","5","D"]
+    print(sol.calPoints(ops))
+
+if __name__ == "__main__":
+    main()
+
+
+# https://neetcode.io/problems/baseball-game?list=neetcode250
+```
+
+### File: src/main.py
+
+```python
 # main.py
 import argparse
 import sys
@@ -219,3 +412,9 @@ def main():
 
 if __name__ == "__main__":
     main()
+```
+
+## Summary
+
+- Total files: 6
+- Total lines: 360

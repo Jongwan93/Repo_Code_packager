@@ -23,6 +23,7 @@ Clone the repository:
 ```
 git clone https://github.com/jongwan93/REPO_CODE_PACKAGER
 cd REPO_CODE_PACKAGER
+pip install Pygments
 Set up and activate a virtual environment:
 ```
 
@@ -45,7 +46,12 @@ python src/main.py [directory]
 
 - To save the output to a file:
 ```
-python src/main.py . -o output.md
+python src/main.py . -o output.txt
+```
+
+- For "help"
+```
+python src/main.py --help
 ```
 
 - command may be updated later
