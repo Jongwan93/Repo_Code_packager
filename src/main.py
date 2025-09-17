@@ -193,6 +193,7 @@ def main():
 
 {summary_str}
 """
+    
     # optional feature 2: Token counting
     if args.tokens:
         estimated_tokens = total_chars // 4
