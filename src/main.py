@@ -194,6 +194,8 @@ def main():
 
 {file_contents_str}
 
+{recent_summary}
+
 ## Summary
 
 {summary_str}
