@@ -168,11 +168,19 @@ def main():
         help = "Estimate and display the token count for the context."
     )
     
+    # includes files modified within 7 days
     parser.add_argument(
     "-r", "--recent",
     action="store_true",
     help="Only include files modified within the last 7 days"
-)
+    )
+
+    # Lab3-2: create directory tree structure
+    parser.add_argument(
+    "-d", "--dirs-only",
+    action="store_true",
+    help="Show only the directory structure without file contents."
+    )
 
     # pare the argument
     args = parser.parse_args()
@@ -184,7 +192,7 @@ def main():
     file_list = get_all_files(args.paths)
 
     if args.recent:
-    file_list = [f for f in file_list if is_recently_modified(f)]
+        file_list = [f for f in file_list if is_recently_modified(f)]
 
     if not file_list:
         print("Error: No files found in the specified paths.", file=sys.stderr)
@@ -195,17 +203,18 @@ def main():
     file_contents_str, total_lines, total_chars = format_file_contents(file_list, base_path)
     summary_str = generate_summary(file_list, total_lines)
     
-recent_summary = ""
-if args.recent:
-    recent_summary = "\n## Recent Changes\n"
-    if file_list:
-        for f in file_list:
-            days_ago = int((time.time() - os.path.getmtime(f)) // 86400)
-            recent_summary += f"- {os.path.basename(f)} (modified {days_ago} days ago)\n"
+    recent_summary = ""
+    if args.recent:
+        recent_summary = "\n## Recent Changes\n"
+        if file_list:
+            for f in file_list:
+                days_ago = int((time.time() - os.path.getmtime(f)) // 86400)
+                recent_summary += f"- {os.path.basename(f)} (modified {days_ago} days ago)\n"
     else:
         recent_summary += "No files modified in the last 7 days.\n"
 
-    final_output = f"""# Repository Context
+    output_parts = [
+        f"""# Repository Context
 
 ## File System Location
 
@@ -217,18 +226,22 @@ if args.recent:
 
 ## Structure
 
-{structure_tree_str}
+{structure_tree_str}"""
+    ]
 
-## File Contents
+    if not args.dirs_only:
+        output_parts.append(f"""## File Contents
 
-{file_contents_str}
+{file_contents_str}""")
 
-{recent_summary}
+    if args.recent:
+        output_parts.append(recent_summary)
 
-## Summary
+    output_parts.append(f"""## Summary
 
-{summary_str}
-"""
+{summary_str}""")
+    
+    final_output = "\n\n".join(output_parts)
     
     # optional feature 2: Token counting
     if args.tokens:
