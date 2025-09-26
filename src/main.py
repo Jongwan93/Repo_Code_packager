@@ -174,6 +174,7 @@ def main():
         help = "Estimate and display the token count for the context."
     )
     
+    # includes files modified within 7 days
     parser.add_argument(
         "-r", "--recent",
         action="store_true",
@@ -185,6 +186,13 @@ def main():
         "-l", "--line-numbers",
         action="store_true",
         help="Include line numbers in the file content output."
+    )
+
+    # Lab3-2: create directory tree structure
+    parser.add_argument(
+        "-d", "--dirs-only",
+        action="store_true",
+        help="Show only the directory structure without file contents."
     )
 
     # pare the argument
@@ -218,7 +226,8 @@ def main():
     else:
         recent_summary += "No files modified in the last 7 days.\n"
 
-    final_output = f"""# Repository Context
+    output_parts = [
+        f"""# Repository Context
 
 ## File System Location
 
@@ -230,18 +239,22 @@ def main():
 
 ## Structure
 
-{structure_tree_str}
+{structure_tree_str}"""
+    ]
 
-## File Contents
+    if not args.dirs_only:
+        output_parts.append(f"""## File Contents
 
-{file_contents_str}
+{file_contents_str}""")
 
-{recent_summary}
+    if args.recent:
+        output_parts.append(recent_summary)
 
-## Summary
+    output_parts.append(f"""## Summary
 
-{summary_str}
-"""
+{summary_str}""")
+    
+    final_output = "\n\n".join(output_parts)
     
     # optional feature 2: Token counting
     if args.tokens:
