@@ -76,7 +76,7 @@ def create_structure_tree(file_list, base_path):
     return "\n".join(generate_tree_string(tree))
 
 # gather the file contents and merge into a big string block.
-def format_file_contents(file_list, base_path):
+def format_file_contents(file_list, base_path, args):
     all_contents = []
     total_lines = 0
     total_chars = 0
@@ -91,6 +91,12 @@ def format_file_contents(file_list, base_path):
                 all_contents.append(f"### File: {relative_path}")
                 
                 content = f.read()
+
+                # Lab3-1: add line numbers to the output file
+                if args.line_numbers:
+                    lines = content.splitlines()
+                    numbered_lines = [f"{i+1}: {line}" for i, line in enumerate(lines)]
+                    content = "\n".join(numbered_lines)
 
                 if file_size > MAX_BYTES:
                     content = content[:MAX_BYTES]
@@ -173,6 +179,13 @@ def main():
         action="store_true",
         help="Only include files modified within the last 7 days"
     )
+    
+    # Lab3-1: adds line numbers to the output file
+    parser.add_argument(
+        "-l", "--line-numbers",
+        action="store_true",
+        help="Include line numbers in the file content output."
+    )
 
     # pare the argument
     args = parser.parse_args()
@@ -192,7 +205,7 @@ def main():
 
     git_info_str = get_git_info(base_path)
     structure_tree_str = create_structure_tree(file_list, base_path)
-    file_contents_str, total_lines, total_chars = format_file_contents(file_list, base_path)
+    file_contents_str, total_lines, total_chars = format_file_contents(file_list, base_path, args)
     summary_str = generate_summary(file_list, total_lines)
     
     recent_summary = ""
