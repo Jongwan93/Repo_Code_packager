@@ -21,6 +21,22 @@ This script requires **Python 3** to be installed on your system.
         git clone <YOUR_REPOSITORY_URL>
         cd <YOUR_REPOSITORY_FOLDER_NAME>
         ```
+        
+3.  **Install Dependencies**
+    -   This project uses third-party libraries listed in `requirements.txt`. Install them using pip:
+
+    -   **On macOS / Linux:**
+        ```bash
+        pip3 install -r requirements.txt
+        ```
+    -   **On Windows:**
+        ```bash
+        pip install -r requirements.txt
+        ```
+        or
+        ```bash
+        py -3 -m pip install -r requirements.txt
+        ```
 
 ## ## Usage
 
