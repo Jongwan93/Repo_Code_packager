@@ -45,7 +45,6 @@ It's common to use the `python3` command on macOS and Linux systems.
     python3 -m src.main . --recent --line-numbers
     ```
 
----
 
 ### ### On Windows
 
