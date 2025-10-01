@@ -8,7 +8,7 @@ When developers ask LLMs for help with their code, the biggest challenge is prov
 
 REPO_CODE_PACKAGER solves this by packaging all the essential information about your repository into one well-structured file, helping the LLM understand your project's architecture much more effectively.
 
-## ## Prerequisites
+## Prerequisites
 
 This script requires **Python 3** to be installed on your system.
 
@@ -38,7 +38,7 @@ This script requires **Python 3** to be installed on your system.
         py -3 -m pip install -r requirements.txt
         ```
 
-## ## Usage
+## Usage
 
 To run the program, navigate to the project's root directory (the folder containing the `src` directory) and use the following commands in your terminal.
 
@@ -62,7 +62,7 @@ It's common to use the `python3` command on macOS and Linux systems.
     ```
 
 
-### ### On Windows
+### On Windows
 
 On Windows, you can use the `python` or `py -3` command.
 
