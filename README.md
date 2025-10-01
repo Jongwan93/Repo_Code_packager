@@ -1,60 +1,92 @@
-REPO_CODE_PACKAGER (Repository Context Packager)
+# REPO_CODE_PACKAGER (Repository Context Packager)
 
 REPO_CODE_PACKAGER is a command-line tool (CLI) that analyzes a local Git repository and generates a single, clean text file optimized for sharing with Large Language Models (LLMs). No more manually copy-pasting files when asking ChatGPT for help with your code!
 
-The Problem
+## The Problem
 
 When developers ask LLMs for help with their code, the biggest challenge is providing enough context. Sharing snippets of code without the project's file structure, dependencies, and file relationships often leads to generic or unhelpful answers.
 
 REPO_CODE_PACKAGER solves this by packaging all the essential information about your repository into one well-structured file, helping the LLM understand your project's architecture much more effectively.
 
-Key Features
-- Simple CLI Interface: Analyze your entire project, specific directories, or individual files with a single command.
+## ## Prerequisites
 
-- Project Structure Visualization: Automatically generates a tree view of your project's directory and file structure.
+This script requires **Python 3** to be installed on your system.
 
-- Git Integration: Includes key Git metadata like the current branch and latest commit information.
+1.  **Install Python 3**
+    -   If you don't have Python installed, you can download it from [python.org](https://www.python.org/downloads/).
 
-- Save to File: Print the context directly to the console or use the -o option to save it to a .txt or .md file.
+2.  **Clone the Repository**
+    -   Open your terminal (or Git Bash on Windows) and run the following command to download the project:
+        ```bash
+        git clone <YOUR_REPOSITORY_URL>
+        cd <YOUR_REPOSITORY_FOLDER_NAME>
+        ```
 
-🛠️ Installation
-Clone the repository:
+## ## Usage
 
-```
-git clone https://github.com/jongwan93/REPO_CODE_PACKAGER
-cd REPO_CODE_PACKAGER
-pip install Pygments
-Set up and activate a virtual environment:
-```
+To run the program, navigate to the project's root directory (the folder containing the `src` directory) and use the following commands in your terminal.
 
-# Create a virtual environment
-python -m venv venv
+### ### 🍎 On macOS / Linux
 
-# Usage
-The Basic command structure is 
-```
-python src/main.py [options] <paths>
-```
-- To analyze the entire current directory:
-```
-python src/main.py .
-```
-- To analyze specific directories or files:
-```
-python src/main.py [directory]
-```
+It's common to use the `python3` command on macOS and Linux systems.
 
-- To save the output to a file:
-```
-python src/main.py . -o output.txt
-```
+-   **Basic Usage (analyze the current directory):**
+    ```bash
+    python3 -m src.main .
+    ```
 
-- For "help"
-```
-python src/main.py --help
-```
+-   **Save output to a file:**
+    ```bash
+    python3 -m src.main . -o output.txt
+    ```
 
-- command may be updated later
+-   **Include only recent files and add line numbers:**
+    ```bash
+    python3 -m src.main . --recent --line-numbers
+    ```
+
+---
+
+### ### On Windows
+
+On Windows, you can use the `python` or `py -3` command.
+
+-   **Basic Usage (analyze the current directory):**
+    ```bash
+    python -m src.main .
+    ```
+    or
+    ```bash
+    py -3 -m src.main .
+    ```
+
+-   **Save output to a file:**
+    ```bash
+    python -m src.main . -o output.txt
+    ```
+
+-   **Include only recent files and add line numbers:**
+    ```bash
+    python -m src.main . --recent --line-numbers
+    ```
+
+---
+
+## Key Features
+
+| positional arguments | description                                           |
+| -------------------- | ----------------------------------------------------- |
+| **paths**            | Path to the repository / files in the same repository |
+
+| options                   | description                                                            |
+| ------------------------- | ---------------------------------------------------------------------- |
+| **-h, --help**            | show this help message and exit                                        |
+| **--version, -v**         | show program's version number and exit                                 |
+| **--output, -o [OUTPUT]** | Output filename                                                        |
+| **--tockens**             | Estimate and display the token count for the context                   |
+| **--recent, -r [RECENT]** | Only include files modified within the last 7 days                     |
+| **--line-number, -l**     | Include line number when displaying file content output                |
+| **--dirs-only, -d**       | Show only directory structure tree without file contents               |
 
 # License
 This project is licensed under the MIT License.
