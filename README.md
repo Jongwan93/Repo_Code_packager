@@ -42,7 +42,7 @@ This script requires **Python 3** to be installed on your system.
 
 To run the program, navigate to the project's root directory (the folder containing the `src` directory) and use the following commands in your terminal.
 
-### ### 🍎 On macOS / Linux
+### 🍎 On macOS / Linux
 
 It's common to use the `python3` command on macOS and Linux systems.
 
