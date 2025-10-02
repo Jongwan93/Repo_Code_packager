@@ -2,9 +2,10 @@ import argparse
 import sys
 import os
 import time
-from .file_utils import get_all_files, is_recently_modified
-from .git_utils import get_git_info
-from .content_packager import create_structure_tree, format_file_contents, generate_summary
+from file_utils import get_all_files, is_recently_modified
+from git_utils import get_git_info
+from content_packager import create_structure_tree, format_file_contents, generate_summary
+from toml_utils import load_config
 
 TOOL_VERSION = "0.1.0"
 
@@ -60,6 +61,14 @@ def main():
         action="store_true",
         help="Show only the directory structure without file contents."
     )
+
+    #load default values from .toml config
+    try:
+        defaults = load_config(".repo-code-packager-config.toml")
+    except RuntimeError as e:
+        sys.exit(f"Runtime Error: {e}")
+    if defaults:
+        parser.set_defaults(**defaults)
 
     # pare the argument
     args = parser.parse_args()

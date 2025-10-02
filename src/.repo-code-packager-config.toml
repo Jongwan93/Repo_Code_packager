@@ -1,0 +1,7 @@
+#This config is to set the default value of the flags
+#Note: command line args can override these value
+output = "" #use "" to represent no output file, output directed to stdout
+tokens = false
+recent = false
+line_numbers = false
+dirs_only = false
