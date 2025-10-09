@@ -3,9 +3,9 @@ import time
 
 # find the files and directory
 # Issue #2 Fix: Return absolute paths [9/14/2025]
-def get_all_files(paths):
+def get_all_files(paths, exclude_dirs=None):
     all_files = []
-    excluded_dirs = {'venv'} # maybe match with .gitignore
+    excluded_set = set(exclude_dirs) if exclude_dirs else set()
 
     for path in paths:
         # Convert the input path to an absolute path
@@ -17,7 +17,7 @@ def get_all_files(paths):
         # if the path is directory, add all the files under it
         elif os.path.isdir(abs_path):
             for root, dirs, files in os.walk(abs_path):
-                dirs[:] = [d for d in dirs if not d.startswith('.') and d not in excluded_dirs]
+                dirs[:] = [d for d in dirs if not d.startswith('.') and d not in excluded_set]
                 for file in files:
                     if not file.startswith('.'):
                         all_files.append(os.path.join(root, file))

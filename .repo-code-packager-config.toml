@@ -5,3 +5,6 @@ tokens = false
 recent = false
 line_numbers = false
 dirs_only = false
+
+# This is a list of directory names to exclude from the output.
+exclude_dirs = ["__pycache__", "venv", ".git"]
