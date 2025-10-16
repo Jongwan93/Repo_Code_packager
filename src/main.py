@@ -102,7 +102,7 @@ def main():
     # pare the argument
     args = parser.parse_args()
 
-    print(f"DEBUG: 무시할 폴더 목록: {exclude_list}")
+    print(f"DEBUG: Files to ignore: {exclude_list}")
 
     first_path_abs = os.path.abspath(args.paths[0])
     base_path = os.path.dirname(first_path_abs) if os.path.isfile(first_path_abs) else first_path_abs
