@@ -1,5 +1,6 @@
 import os
 import sys
+import json
 from pygments.lexers import guess_lexer_for_filename
 from pygments.util import ClassNotFound
 
@@ -87,3 +88,19 @@ def generate_summary(file_list, total_lines):
         f"- Total lines: {total_lines}"
     )
     return summary_string
+
+def format_json(data):
+    # get the dictionary data and convert to json string
+    return json.dumps(data, indent=2)
+
+def format_markdown(data):
+    # get the dictionary data and convert to markdown string
+    output_parts = [
+        f"# Repository Context",
+        f"## File System Location\n\n{data['base_path']}",
+        f"## Git Info\n\n{data['git_info']}",
+        f"## Structure\n\n{data['structure_tree']}",
+        f"## File Contents\n\n{data['file_contents']}",
+        f"## Summary\n\n{data['summary']}"
+    ]
+    return "\n\n".join(output_parts)

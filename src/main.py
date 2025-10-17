@@ -4,7 +4,7 @@ import os
 import time
 from file_utils import get_all_files, is_recently_modified
 from git_utils import get_git_info
-from content_packager import create_structure_tree, format_file_contents, generate_summary
+from content_packager import create_structure_tree, format_file_contents, generate_summary, format_json, format_markdown
 from toml_utils import load_config
 
 TOOL_VERSION = "0.1.0"
@@ -87,6 +87,14 @@ def main():
         help="Show only the directory structure without file contents."
     )
 
+    # Lab6: output format style
+    parser.add_argument(
+        "--style",
+        default="markdown",
+        choices=["markdown", "json"],
+        help="The output format (markdown or json)."
+    )
+
     #load default values from .toml config
     try:
         defaults = load_config(".repo-code-packager-config.toml")
@@ -122,8 +130,19 @@ def main():
     file_contents_str, total_lines, total_chars = format_file_contents(file_list, base_path, args)
     summary_str = generate_summary(file_list, total_lines)
 
-    # call build_report to assemble the final output
-    final_output = build_report(base_path, git_info_str, structure_tree_str, file_contents_str, summary_str, file_list, args)
+    report_data = {
+        "base_path": base_path,
+        "git_info": git_info_str,
+        "structure_tree": structure_tree_str,
+        "file_contents": file_contents_str,
+        "summary": summary_str
+    }
+
+    final_output = ""
+    if args.style == 'json':
+        final_output = format_json(report_data)
+    else:
+        final_output = format_markdown(report_data)
 
     # optional feature 2: Token counting
     if args.tokens:
