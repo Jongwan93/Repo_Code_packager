@@ -17,5 +17,9 @@
   "bugs": {
     "url": "https://github.com/Jongwan93/Repo_Code_packager/issues"
   },
-  "homepage": "https://github.com/Jongwan93/Repo_Code_packager#readme"
+  "homepage": "https://github.com/Jongwan93/Repo_Code_packager#readme",
+  "dependencies": {
+    "pytest": "^1.0.0",
+    "pytest-cov": "^0.0.1"
+  }
 }
