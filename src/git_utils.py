@@ -32,5 +32,5 @@ def get_git_info(repo_path):
             f"- Date: {date}"
         )
     
-    except (subprocess.CalledProcessError, FileNotFoundError, IndexError):
+    except (subprocess.CalledProcessError, FileNotFoundError, NotADirectoryError, OSError):
         return "Not a git repository"
