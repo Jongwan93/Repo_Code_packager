@@ -45,7 +45,7 @@ class TestGenerateSummary:
         
         assert "Total files: 0" in result
         assert "Total lines: 0" in result
-        assert 1 == 2 # intentionally added this line for Lab 8
+        # assert 1 == 2  now removed this line to fix the test error.
     
     def test_summary_format(self):
         """Summary should follow expected format"""
