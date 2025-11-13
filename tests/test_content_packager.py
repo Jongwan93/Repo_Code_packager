@@ -234,3 +234,7 @@ class TestCreateStructureTree:
         assert "level2" in result
         assert "level3" in result
         assert "deep.txt" in result
+
+    def test_for_lab8_pr(self):
+        """test to check CI run in PR"""
+        assert 1 + 1 == 2 # fixed this back to pass CLI test in PR
