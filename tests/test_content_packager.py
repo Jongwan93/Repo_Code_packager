@@ -234,3 +234,7 @@ class TestCreateStructureTree:
         assert "level2" in result
         assert "level3" in result
         assert "deep.txt" in result
+
+    def test_for_lab8_pr():
+        """test to check CI run in PR"""
+        assert 1 + 1 == 2
