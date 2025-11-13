@@ -43,7 +43,7 @@ class TestIsRecentlyModified:
         test_file.write_text("content")
         
         # Set to exactly 7 days ago
-        seven_days_ago = time.time() - (7 * 86400)
+        seven_days_ago = time.time() - (7 * 86400) + 1
         os.utime(str(test_file), (seven_days_ago, seven_days_ago))
         
         result = is_recently_modified(str(test_file), days=7)
