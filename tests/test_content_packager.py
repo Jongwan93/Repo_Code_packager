@@ -237,4 +237,4 @@ class TestCreateStructureTree:
 
     def test_for_lab8_pr(self):
         """test to check CI run in PR"""
-        assert 1 + 1 == 2
+        assert 1 + 1 == 3 # now fixed this to make CI fail
