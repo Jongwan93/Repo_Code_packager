@@ -38,6 +38,9 @@ This script requires **Python 3** to be installed on your system.
       ```bash
       py -3 -m pip install -r requirements.txt
       ```
+      ```bash
+      pip install repo-code-packager
+      ```
 
 ## Usage
 
@@ -89,6 +92,17 @@ On Windows, you can use the `python` or `py -3` command.
 - **Include only recent files and add line numbers:**
   ```bash
   python -m src.main . --recent --line-numbers
+  ```
+
+  **Example usage**
+  ```
+  from repo_code_packager.content_packager import ContentPackager
+
+  packager = ContentPackager(
+      repo_path="./", 
+      output_file="output.txt"
+  )
+  packager.package()
   ```
 
 ---
