@@ -96,7 +96,7 @@ On Windows, you can use the `python` or `py -3` command.
 
   **Example usage**
   ```
-  from repo_code_packager.content_packager import ContentPackager
+  from Repo_Code_Packager.content_packager import ContentPackager
 
   packager = ContentPackager(
       repo_path="./", 
