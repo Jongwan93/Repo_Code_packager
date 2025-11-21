@@ -5,7 +5,7 @@ import json
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', 'src'))
 
-from content_packager import (
+from Repo_Code_Packager.content_packager import (
     generate_summary,
     format_json,
     format_markdown,

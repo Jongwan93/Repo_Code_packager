@@ -4,7 +4,7 @@ import pytest
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', 'src'))
 
-from toml_utils import load_config
+from Repo_Code_Packager.toml_utils import load_config
 
 class TestLoadConfig:
     """Tests for load_config function in toml_utils.py"""

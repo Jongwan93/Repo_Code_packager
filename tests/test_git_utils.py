@@ -4,7 +4,7 @@ import sys
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', 'src'))
 
-from git_utils import get_git_info
+from Repo_Code_Packager.git_utils import get_git_info
 
 
 class TestGetGitInfo:
