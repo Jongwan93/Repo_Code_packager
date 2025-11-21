@@ -1,0 +1,25 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "Repo-Code-Packager"
+version = "0.0.1"
+authors = [
+  { name="Jong wan Hur", email="shur1@myseneca.ca" },
+]
+description = "Lab9 project for OSD600"
+readme = "README.md"
+requires-python = ">=3.11"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+dependencies = [
+]
+
+[project.urls]
+"Homepage" = "https://github.com/Jongwan93/Repo_Code_packager.git"
+"Bug Tracker" = "https://github.com/Jongwan93/Repo_Code_packager/issues"
