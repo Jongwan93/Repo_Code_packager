@@ -5,7 +5,7 @@ import time
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', 'src'))
 
-from file_utils import get_all_files, is_recently_modified
+from Repo_Code_Packager.file_utils import get_all_files, is_recently_modified
 
 
 class TestIsRecentlyModified:
