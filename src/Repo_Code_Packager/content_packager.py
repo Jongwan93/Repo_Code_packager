@@ -3,7 +3,43 @@ import sys
 import json
 from pygments.lexers import guess_lexer_for_filename
 from pygments.util import ClassNotFound
+from .file_utils import get_all_files
+from .git_utils import get_git_info
 
+class ContentPackager:
+    def __init__(self, repo_path, output_file, line_numbers=False):
+        self.repo_path = repo_path
+        self.output_file = output_file
+
+        self.args = type('Args', (), {'line_numbers': line_numbers})()
+    
+    def package(self):
+        file_list = get_all_files(self.repo_path)
+        
+        file_contents, total_lines, _ = format_file_contents(file_list, self.repo_path, self.args)
+        
+        structure = create_structure_tree(file_list, self.repo_path)
+
+        git_info = get_git_info(self.repo_path)
+
+        summary = generate_summary(file_list, total_lines)
+
+        data = {
+            'base_path': os.path.abspath(self.repo_path),
+            'git_info': git_info,
+            'structure_tree': structure,
+            'file_contents': file_contents,
+            'summary': summary
+        }
+
+        output = format_markdown(data)
+        try:
+            with open(self.output_file, 'w', encoding='utf-8') as f:
+                f.write(output)
+            print(f"Successfully packaged repository to {self.output_file}")
+        except Exception as e:
+            print(f"Error writing output file: {e}")
+        
 # create tree structure reflecting depth of file and directories
 def create_structure_tree(file_list, base_path):
     tree = {}
